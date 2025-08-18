@@ -26,3 +26,10 @@ dist-ssr
 # Firebase config
 src/firebase.js
 .env
+
+# Vite cache
+node_modules/.vite
+
+# Mac/Linux swap/temp files
+*~
+*.swp
