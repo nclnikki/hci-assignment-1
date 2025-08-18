@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: Arial, sans-serif;
+}
+
+/* Full screen flex container */
+.app-container {
+  min-height: 80vh; /* take full height of screen */
+  display: flex;
+  flex-direction: column; /* stack title + card */
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+  color: white;
+  text-align: center;
+}
+
+/* Style the heading */
+.app-container h1 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/*
+.auth-container {
+  max-width: 300px;   
+  width: 100%;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+*/
+
+.auth-container {
+  width: 350px;
+  min-height: 400px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #333;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.auth-form input {
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;   /* <-- White background */
+  color: #333;              /* <-- Dark text */
+  font-size: 15px;
+  width: 100%;       /* make inputs take full width of the form */
+  box-sizing: border-box; /* prevents overflow */
+}
+
+
+.auth-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb; /* nice blue */
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.auth-form button:hover {
+  background: #1d4ed8;
+}
+
+.error {
+  color: #ff4d4d;
+  background: #ffe6e6;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.success {
+  color: #2e7d32;
+  background: #e6f4ea;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+
+.switch-mode {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.switch-mode span {
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.switch-mode span:hover {
+  text-decoration: underline;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  padding: 8px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
