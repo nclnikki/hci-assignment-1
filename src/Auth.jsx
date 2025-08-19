@@ -23,7 +23,6 @@ export default function Auth() {
     try {
       if (mode === "signup") {
         await createUserWithEmailAndPassword(auth, email, password);
-        //navigate("/dashboard"); // redirect after signup
         alert("Account created successfully! You can now log in.");
       } else {
         await signInWithEmailAndPassword(auth, email, password);
@@ -43,6 +42,8 @@ export default function Auth() {
           setError("This email is already registered. Please log in instead.");
         } else if (err.code === "auth/weak-password") {
           setError("Password should be at least 6 characters.");
+        } else if (err.code === "auth/invalid-email"){
+          setError("Please enter a valid email address (e.g., name@domain.com)");
         } else {
           setError(err.message);
         }
