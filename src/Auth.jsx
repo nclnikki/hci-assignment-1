@@ -4,15 +4,17 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom"; // 👈 import navigate
+import { useNavigate } from "react-router-dom"; 
 import "./Auth.css";
+import PasswordInput from "./PasswordInput"; 
+
 
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mode, setMode] = useState("login"); // "login" or "signup"
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // 👈 setup navigation
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +23,10 @@ export default function Auth() {
     try {
       if (mode === "signup") {
         await createUserWithEmailAndPassword(auth, email, password);
-        navigate("/dashboard"); // 👈 redirect after signup
+        navigate("/dashboard"); // redirect after signup
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        navigate("/dashboard"); // 👈 redirect after login
+        navigate("/dashboard"); // redirect after login
       }
     } catch (err) {
       if (err.code === "auth/invalid-credential") {
@@ -52,12 +54,10 @@ export default function Auth() {
           required
         />
 
-        <input
-          type="password"
-          placeholder="Enter your password"
+        <PasswordInput
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          placeholder="Enter your password"
         />
 
         <button type="submit">
