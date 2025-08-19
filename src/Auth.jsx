@@ -23,22 +23,36 @@ export default function Auth() {
     try {
       if (mode === "signup") {
         await createUserWithEmailAndPassword(auth, email, password);
-        navigate("/dashboard"); // redirect after signup
+        //navigate("/dashboard"); // redirect after signup
+        alert("Account created successfully! You can now log in.");
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         navigate("/dashboard"); // redirect after login
       }
     } catch (err) {
-      if (err.code === "auth/invalid-credential") {
-        setError("Invalid email or password. Please try again.");
-      } else if (err.code === "auth/email-already-in-use") {
-        setError("This email is already registered. Please log in instead.");
-      } else if (err.code === "auth/weak-password") {
-        setError("Password should be at least 6 characters.");
-      } else {
-        setError(err.message);
+      if (mode === "login") {
+        // Only show login-specific errors
+        if (err.code === "auth/invalid-credential") {
+          setError("Invalid email or password. Please try again.");
+        } else {
+          setError(err.message);
+        }
+      } else if (mode === "signup") {
+        // Only show signup-specific errors
+        if (err.code === "auth/email-already-in-use") {
+          setError("This email is already registered. Please log in instead.");
+        } else if (err.code === "auth/weak-password") {
+          setError("Password should be at least 6 characters.");
+        } else {
+          setError(err.message);
+        }
       }
     }
+  };
+
+  const toggleMode = () => {
+    setMode(mode === "login" ? "signup" : "login");
+    setError(""); // Clear any previous errors when switching
   };
 
   return (
@@ -71,9 +85,10 @@ export default function Auth() {
         {mode === "login"
           ? "Don’t have an account?"
           : "Already have an account?"}{" "}
-        <span onClick={() => setMode(mode === "login" ? "signup" : "login")}>
+        <span onClick={toggleMode}>
           {mode === "login" ? "Sign up" : "Login"}
         </span>
+
       </p>
     </div>
   );
